@@ -25,7 +25,7 @@ jobs:
             file: ./src/Dockerfile
             push: true
             tags: |
-                samukasouza2207/kube-news-repo:${{}github.run_number}
+                samukasouza2207/kube-news-repo:${{github.run_number}}
                 samukasouza2207/kube-news-repo:latest
 
     CD:
@@ -43,7 +43,7 @@ jobs:
             - name: Deploy Kubernets cluster
               uses: Azure/k8s-deploy@v4.9
               with:
-                  images: samukasouza2207/kube-news-repo:${{}github.run_number}
+                  images: samukasouza2207/kube-news-repo:${{github.run_number}}
                   manifests: |
                       k8s/deployment.yaml
                       
