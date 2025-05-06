@@ -1,0 +1,45 @@
+name: CI-CD
+
+on:
+    push:
+      branches: ["main"]
+
+
+jobs:
+    CI:
+      runs-on: ubuntu-latest
+
+      steps:
+        - uses: actions/checkout@v4.2.2
+
+        - name: Autentica no DockerHub
+          uses: docker/login-action@v3.4.0
+          with:
+            username: ${{secrets.USERNAME_DOCKERHUB}}
+            password: ${{secrets.PAT_DOCKERHUB}}
+        
+        - name: Construção Img docker
+          uses: docker/build-push-action@v6.16.0
+          with:
+            context: ./src
+            file: ./src/Dockerfile
+            push: true
+            tags: |
+                samukasouza2207/kube-news-repo:v1
+                samukasouza2207/kube-news-repo:latest
+
+    CD:
+        runs-on: ubuntu-latest
+        needs: [CI]
+        steps:
+            - uses: actions/checkout@v4.2.2
+            
+            - name: k8s Set Context
+              uses: Azure/k8s-set-context@v3.0
+              with:
+                  method: kubeconfig
+                  kubeconfig: ${{secrets.K8S_CONFIG}}
+                  
+
+        
+            
