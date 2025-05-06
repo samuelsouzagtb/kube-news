@@ -25,6 +25,6 @@ jobs:
             file: ./src/Dockerfile
             push: true
             tags: |
-                samuelsouza/live-kube-news:v1
-                samuelsouza/live-kube-news:latest
+                samukasouza2207/kube-news-repo:v1
+                samukasouza2207/kube-news-repo:latest
             
