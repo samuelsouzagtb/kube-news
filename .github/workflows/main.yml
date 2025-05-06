@@ -15,7 +15,7 @@ jobs:
         - name: Autentica no DockerHub
           uses: docker/login-action@v3.4.0
           with:
-            username: samukasouza2207
+            username: ${{secrets.USERNAME_DOCKERHUB}}
             password: ${{secrets.PAT_DOCKERHUB}}
         
         - name: Construção Img docker
