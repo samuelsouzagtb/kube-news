@@ -1,4 +1,4 @@
-name: CI-CD
+.name: CI-CD
 
 on:
     push:
@@ -15,7 +15,7 @@ jobs:
         - name: Autentica no DockerHub
           uses: docker/login-action@v3.4.0
           with: 
-            password: ${{PAT_DOCKERHUB}}
+            password: ${{secrets.PAT_DOCKERHUB}}
         
         - name: Construção Img docker
           uses: docker/build-push-action@v6.16.0
