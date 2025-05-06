@@ -24,7 +24,7 @@ jobs:
             context: ./src
             file: ./src/Dockerfile
             push: true
-            tags:
+            tags: |
                 samuelsouza/live-kube-news:v1
                 samuelsouza/live-kube-news:latest
             
