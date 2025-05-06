@@ -1,3 +1,5 @@
+# Este arquivo é responsável por realizar o CI/CD do projeto
+
 name: CI-CD
 
 on:
